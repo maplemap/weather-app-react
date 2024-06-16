@@ -1,0 +1,19 @@
+@import '~variables';
+@import './breakpoints';
+
+@function toRem($size) {
+  @return calc($size / $rootFontSize) * 1rem;
+}
+
+@mixin respond-below($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+    @media (max-width: toRem($breakpoint-value)) {
+      @content;
+    }
+
+  } @else {
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}

@@ -1,0 +1,58 @@
+@import "./normalize";
+@import "./fonts";
+@import "./variables";
+@import "./colors";
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+body {
+  color: $colorNeutral850;
+  font-family: $nunitoFont;
+  background: $colorNeutral50;
+}
+
+h1, h2, h3,
+h4, h5, h6 {
+  font-family: $nunitoFont;
+  text-align: center;
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: $nunitoFont;
+  border: none;
+  background: none;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+a {
+  color: inherit;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.meteocons {
+  color: inherit;
+  text-decoration: none;
+
+  &:before {
+    content: attr(data-icon);
+    font-family: 'MeteoconsRegular', serif;
+  }
+}

@@ -1,0 +1,20 @@
+@import '~mixins';
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: toRem(38);
+  padding: toRem(100) toRem(20);
+}
+
+.back {
+  font-size: toRem(20);
+  margin-top: toRem(10);
+}
+
+.backLink {
+  text-decoration: underline;
+}

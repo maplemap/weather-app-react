@@ -1,0 +1,15 @@
+$breakpoints: (
+  xs: 576,
+  sm: 640,
+  md: 768,
+  lg: 1024,
+  xl: 1280,
+  2xl: 1600,
+  3xl: 1900,
+);
+
+:export {
+  @each $key, $value in $breakpoints {
+    #{$key}: #{$value};
+  }
+}

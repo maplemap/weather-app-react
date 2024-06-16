@@ -1,0 +1,9 @@
+@import '~mixins';
+
+.primaryLayout {
+  height: 100vh;
+}
+
+.content {
+  padding: toRem(24);
+}
