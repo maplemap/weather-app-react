@@ -1,0 +1,11 @@
+@import '~colors';
+@import '~mixins';
+
+.button {
+  display: inline-block;
+  padding: toRem(4) toRem(20);
+  border: toRem(1) solid $colorNeutral900;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
