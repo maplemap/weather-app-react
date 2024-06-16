@@ -1,9 +1,12 @@
-import {lazy} from 'react';
 import {Navigate} from 'react-router-dom';
-import {LoginPage, NotFoundPage, PrimaryPage, SecurePage} from '@/pages';
+import {
+  ForecastPage,
+  LoginPage,
+  NotFoundPage,
+  PrimaryPage,
+  SecurePage,
+} from '@/pages';
 import {ROUTES} from '@/routes/constants';
-
-const ForecastModule = lazy(() => import('@/modules/forecast'));
 
 export const routes = [
   {
@@ -15,7 +18,7 @@ export const routes = [
           {
             path: ROUTES.BASE,
             exact: true,
-            element: <ForecastModule />,
+            element: <ForecastPage />,
           },
         ],
       },

@@ -3,11 +3,19 @@ import {generateId} from '@/utils/generate-id';
 import styles from './input.module.scss';
 
 export interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  label: string;
+  className?: string;
+  label?: string;
+  getRef?: (input: HTMLInputElement | null) => void;
 }
 
-export const Input = ({label, ...props}: IProps) => {
+export const Input = ({label, className, getRef, ...props}: IProps) => {
   const refId = useRef(generateId());
+
+  const getReference = (input: HTMLInputElement | null) => {
+    if (getRef) {
+      getRef(input);
+    }
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -16,7 +24,12 @@ export const Input = ({label, ...props}: IProps) => {
           {label}
         </label>
       )}
-      <input id={refId.current} className={styles.input} {...props} />
+      <input
+        ref={getReference}
+        id={refId.current}
+        className={`${styles.input} ${className}`}
+        {...props}
+      />
     </div>
   );
 };

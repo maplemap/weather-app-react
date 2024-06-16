@@ -1,9 +1,12 @@
 @import '~mixins';
+@import '~variables';
 
 .primaryLayout {
   height: 100vh;
 }
 
 .content {
+  max-width: toRem($maxWidthApp);
   padding: toRem(24);
+  margin: 0 auto;
 }
