@@ -1,0 +1,38 @@
+@import '~mixins';
+@import '~colors';
+
+.wrapper {
+  position: relative;
+
+  .menu {
+    display: none;
+    position: absolute;
+    top: 75%;
+    right: 0;
+
+    .menuItem {
+      line-height: toRem(20);
+      padding: toRem(8) toRem(16);
+      background-color: $colorNeutral50;
+      border: toRem(1) solid $colorNeutral200;
+      cursor: pointer;
+      transition: all 0.3s;
+
+      &:hover {
+        background-color: $colorNeutral500;
+      }
+    }
+  }
+
+  &:hover {
+    .menu {
+      display: block;
+    }
+  }
+}
+
+.email {
+  cursor: pointer;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
