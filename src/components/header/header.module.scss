@@ -1,0 +1,38 @@
+@import '~variables';
+@import '~mixins';
+
+.header {
+  box-shadow: rgba(0, 0, 0, 0.12) 0 0 toRem(6) 0;
+}
+
+.wrapper {
+  display: flex;
+  width: 94%;
+  max-width: toRem($maxWidthApp);
+  height: toRem(64);
+  line-height: toRem(64);
+  padding: 0 3%;
+  margin: 0 auto;
+}
+
+.logo {
+  display: inline-block;
+  line-height: toRem(81.5);
+  margin-right: toRem(8);
+}
+
+.logoIcon {
+  font-size: toRem(34)
+}
+
+.brand {
+  font-size: toRem(21)
+}
+
+.userBox {
+  max-width: toRem(200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+}
