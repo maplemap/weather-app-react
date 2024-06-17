@@ -53,6 +53,10 @@
       font-size: 55%;
     }
   }
+
+  @include respond-below(xs) {
+    font-size: toRem(43.2);
+  };
 }
 
 .skyIcon {
@@ -63,6 +67,14 @@
   span {
     font-size: toRem(96);
   }
+
+  @include respond-below(xs) {
+    top: toRem(48);
+
+    & span {
+      font-size: toRem(48);
+    }
+  };
 }
 
 .cityName {
@@ -87,11 +99,19 @@
   right: 3%;
   font-size: toRem(16);
   text-align: right;
+
+  @include respond-below(xs) {
+    font-size: toRem(11.2);
+  };
 }
 
 .clock {
   display: block;
   font-size: toRem(40);
+
+  @include respond-below(xs) {
+    font-size: toRem(26);
+  };
 }
 
 .date {
@@ -103,71 +123,4 @@
 .divider {
   border-bottom: toRem(1) solid rgba(0, 0, 0, .05);
   margin: toRem(16) auto toRem(16) auto;
-}
-
-// media query
-@media screen and (max-width: 33.125em) {
-  .updated-label {
-    top: 1.8em;
-  }
-  .sky-icon {
-    top: 4em;
-    font-size: 60%;
-  }
-  .temperature {
-    font-size: 2.7em;
-  }
-  .date-time {
-    font-size: .7em;
-  }
-}
-
-@media screen and (max-width: 31.25em) {
-  .updated-label {
-    width: 50%;
-  }
-
-  .temperature {
-    font-size: 3em;
-  }
-
-  .date-time {
-    font-size: .8em;
-  }
-
-  .info {
-    flex-flow: wrap;
-    text-align: center;
-    font-size: .9em;
-    padding: 0;
-  }
-
-  .info-list {
-    flex: 0 0 50%;
-    margin: 0 2.5% 0 2.5%;
-
-    &:first-child {
-      margin-bottom: 1em;
-    }
-  }
-}
-
-@media screen and (max-width: 23.125em) {
-  .sky-icon {
-    top: 4em;
-    font-size: 45%;
-  }
-
-  .updated-label {
-    top: 0.8em;
-  }
-
-  .date {
-    font-size: 120%;
-  }
-
-  .date-time {
-    top: 2.5em;
-    font-size: .6em;
-  }
 }

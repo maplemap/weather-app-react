@@ -4,12 +4,12 @@ import {WI_DATA_BY_CODE} from './constants';
 
 type TGetIconByWeatherCode = (
   code: TWeatherIconCode,
-  sunsetTimestamp: number,
+  sunsetTimestamp?: number,
 ) => React.ReactElement;
 
 export const getIconByWeatherCode: TGetIconByWeatherCode = (
   code,
-  sunsetTimestamp,
+  sunsetTimestamp = 0,
 ) => {
   const classPrefix = 'wi wi-';
   let iconClassname = WI_DATA_BY_CODE[code].icon;

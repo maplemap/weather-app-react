@@ -1,14 +1,16 @@
 import {Clock, CurrentDay} from '@/components';
+import {Forecast} from '@/components/city-card/forecast';
 import {InfoList} from '@/components/city-card/info-list';
-import {TWeather} from '@/services/api/types';
+import {TForecast, TWeather} from '@/services/api/types';
 import {getIconByWeatherCode} from '@/ui-kit/icons/weather-icons/adapters';
 import styles from './city-card.module.scss';
 
 export type TProps = {
   currentWeather: TWeather;
+  forecast: Array<TForecast>;
 };
 
-export const CityCard = ({currentWeather}: TProps) => {
+export const CityCard = ({currentWeather, forecast}: TProps) => {
   const {
     city,
     temperature,
@@ -52,6 +54,7 @@ export const CityCard = ({currentWeather}: TProps) => {
           {...{windSpeed: wind.speed, humidity, sunset, sunrise, pressure}}
         />
         <div className={styles.divider}></div>
+        {forecast.length > 0 && <Forecast forecast={forecast} />}
       </div>
     </div>
   );

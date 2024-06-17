@@ -1,22 +1,14 @@
-import {useEffect, useState} from 'react';
+import {useEffect} from 'react';
 import {useFetchCurrentWeather} from '@/services/api';
 import {TWeather} from '@/services/api/types';
-import {useAppStore} from '@/services/store';
 
-export const useCurrentWeather = (city: string) => {
-  const [currentWeather, setCurrentWeather] = useState<TWeather | null>(null);
-  const {setLoading} = useAppStore();
+export type TUseCurrentWeather = (city: string) => {
+  currentWeather: TWeather | null;
+  isLoading: boolean;
+};
+
+export const useCurrentWeather: TUseCurrentWeather = (city) => {
   const {data, getData, isLoading} = useFetchCurrentWeather(city);
-
-  useEffect(() => {
-    if (data) {
-      setCurrentWeather(data);
-    }
-  }, [data]);
-
-  useEffect(() => {
-    setLoading(isLoading);
-  }, [isLoading, setLoading]);
 
   useEffect(() => {
     if (city) {
@@ -25,6 +17,7 @@ export const useCurrentWeather = (city: string) => {
   }, [city, getData]);
 
   return {
-    currentWeather,
+    currentWeather: data,
+    isLoading,
   };
 };

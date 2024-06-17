@@ -14,3 +14,12 @@ export type TWeather = {
     degree: number;
   };
 };
+
+export type TForecast = {
+  currentDay: boolean;
+  date: number;
+  iconCode: TWeatherIconCode;
+  dayTemperature: number;
+  nightTemperature: number;
+  description: string;
+};

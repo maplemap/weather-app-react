@@ -8,10 +8,26 @@
   color: $colorNeutral850;
   font-size: toRem(13);
   opacity: .8;
+
+  @include respond-below(xs) {
+    flex-flow: wrap;
+    text-align: center;
+    font-size: toRem(14.4);
+    padding: 0;
+  };
 }
 
 .infoList {
   margin: 0 9%;
+
+  @include respond-below(xs) {
+    flex: 0 0 50%;
+    margin: 0 2.5% 0 2.5%;
+
+    &:first-child {
+      margin-bottom: toRem(16)
+    }
+  };
 }
 
 .infoListItem {

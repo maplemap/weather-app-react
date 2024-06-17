@@ -1,7 +1,7 @@
 import {getPressureInMmHg} from '@/components/city-card/utils/get-pressure-in-mm-hg';
 import {getWindBeaufortScaleByMeterInSecond} from '@/components/city-card/utils/get-wind-beufort-scale';
 import {TWeather} from '@/services/api/types';
-import {getTime} from '@/utils/getTime';
+import {getTime} from '@/utils/get-time';
 import styles from './info-list.module.scss';
 
 export type TInfoListProps = {

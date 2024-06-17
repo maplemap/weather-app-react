@@ -7,10 +7,7 @@ type TPreparedCurrentWeatherData = (
 export const prepareCurrentWeatherData: TPreparedCurrentWeatherData = (
   data,
 ) => {
-  if (
-    !data ||
-    (Object.prototype.hasOwnProperty.call(data, 'cod') && data.cod === '404')
-  ) {
+  if (!data || (data.cod && data.cod === '404')) {
     return null;
   }
 
