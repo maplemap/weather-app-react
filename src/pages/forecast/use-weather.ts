@@ -1,20 +1,16 @@
 import {useEffect, useState} from 'react';
-import {useFetchForecast} from '@/services/api';
+import {useFetchWeather} from '@/services/api';
+import {TWeather} from '@/services/api/types';
 import {useAppStore} from '@/services/store';
 
-enum CODE {
-  NOT_FOUND = '404',
-}
-
-export const useForecast = (city: string) => {
-  const [forecast, setForecast] = useState(null);
+export const useWeather = (city: string) => {
+  const [weather, setWeather] = useState<TWeather | null>(null);
   const {setLoading} = useAppStore();
-  const {data, getData, isLoading} = useFetchForecast(city);
+  const {data, getData, isLoading} = useFetchWeather(city);
 
   useEffect(() => {
     if (data) {
-      const newData = data.cod === CODE.NOT_FOUND ? null : data;
-      setForecast(newData);
+      setWeather(data);
     }
   }, [data]);
 
@@ -29,6 +25,6 @@ export const useForecast = (city: string) => {
   }, [city, getData]);
 
   return {
-    forecast,
+    weather,
   };
 };

@@ -1,0 +1,172 @@
+@import '~@/styles/mixins.scss';
+@import '~@/styles/variables.scss';
+
+.wrapper {
+  max-width: $maxWidthApp;
+  margin: 0 auto;
+}
+
+.header {
+  padding: 1.18em 0;
+}
+
+.contentWrapper {
+  position: relative;
+  font-family: $robotoFont;
+  box-sizing: border-box;
+  border-radius: 2px;
+  padding: 2em 0 0 0;
+  margin: 0 auto;
+  box-shadow: rgba(0, 0, 0, 0.12) 0 toRem(1) toRem(6), rgba(0, 0, 0, 0.12) 0 toRem(1) toRem(4);
+}
+
+.temperature {
+  font-size: toRem(64);
+  text-align: center;
+
+  span {
+    position: relative;
+    left: toRem(-10);
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+
+    &:before,
+    &::after {
+      display: block;
+      position: absolute;
+    }
+
+    &::before {
+      content: attr(data-deg);
+      top: toRem(-13);
+      right: toRem(-17);
+      font-weight: 300;
+      font-size: 90%;
+    }
+
+    &::after {
+      content: attr(data-unit);
+      bottom: toRem(7);
+      right: toRem(-26);
+      font-size: 55%;
+    }
+  }
+}
+
+.skyIcon {
+  position: absolute;
+  top: toRem(40);
+  left: 8%;
+
+  span {
+    font-size: toRem(96);
+  }
+}
+
+.cityName {
+  width: 74%;
+  font-size: toRem(32);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0 auto toRem(8) auto;
+}
+
+.skyState {
+  font-size: toRem(16);
+  text-transform: lowercase;
+  opacity: .7;
+}
+
+.dateTime {
+  position: absolute;
+  top: toRem(48);
+  right: 3%;
+  font-size: toRem(16);
+  text-align: right;
+}
+
+.clock {
+  display: block;
+  font-size: toRem(40);
+}
+
+.date {
+  display: block;
+  text-transform: uppercase;
+  margin-right: toRem(1.6);
+}
+
+.divider {
+  border-bottom: toRem(1) solid rgba(0, 0, 0, .05);
+  margin: toRem(16) auto toRem(16) auto;
+}
+
+// media query
+@media screen and (max-width: 33.125em) {
+  .updated-label {
+    top: 1.8em;
+  }
+  .sky-icon {
+    top: 4em;
+    font-size: 60%;
+  }
+  .temperature {
+    font-size: 2.7em;
+  }
+  .date-time {
+    font-size: .7em;
+  }
+}
+
+@media screen and (max-width: 31.25em) {
+  .updated-label {
+    width: 50%;
+  }
+
+  .temperature {
+    font-size: 3em;
+  }
+
+  .date-time {
+    font-size: .8em;
+  }
+
+  .info {
+    flex-flow: wrap;
+    text-align: center;
+    font-size: .9em;
+    padding: 0;
+  }
+
+  .info-list {
+    flex: 0 0 50%;
+    margin: 0 2.5% 0 2.5%;
+
+    &:first-child {
+      margin-bottom: 1em;
+    }
+  }
+}
+
+@media screen and (max-width: 23.125em) {
+  .sky-icon {
+    top: 4em;
+    font-size: 45%;
+  }
+
+  .updated-label {
+    top: 0.8em;
+  }
+
+  .date {
+    font-size: 120%;
+  }
+
+  .date-time {
+    top: 2.5em;
+    font-size: .6em;
+  }
+}
