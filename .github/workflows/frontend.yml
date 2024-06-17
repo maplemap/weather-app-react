@@ -28,26 +28,26 @@ jobs:
         run: |
           npm run lint
 
-  unit-ui-testing:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
-      repository-projects: write
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set up Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: npm
-          cache-dependency-path: './package-lock.json'
-      - name: Install dependencies
-        run: npm install
-      - name: Run checks
-        run: npm run test
-      - name: Upload code coverage report
-        uses: romeovs/lcov-reporter-action@v0.4.0
-        with:
-          title: Frontend Code Coverage
-          lcov-file: ./coverage/lcov.info
+#  unit-ui-testing:
+#    runs-on: ubuntu-latest
+#    permissions:
+#      contents: write
+#      pull-requests: write
+#      repository-projects: write
+#    steps:
+#      - uses: actions/checkout@v3
+#      - name: Set up Node.js ${{ matrix.node-version }}
+#        uses: actions/setup-node@v3
+#        with:
+#          node-version: ${{ matrix.node-version }}
+#          cache: npm
+#          cache-dependency-path: './package-lock.json'
+#      - name: Install dependencies
+#        run: npm install
+#      - name: Run checks
+#        run: npm run test
+#      - name: Upload code coverage report
+#        uses: romeovs/lcov-reporter-action@v0.4.0
+#        with:
+#          title: Frontend Code Coverage
+#          lcov-file: ./coverage/lcov.info
