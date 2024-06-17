@@ -4,7 +4,6 @@ import {TUser} from '@/types/user';
 
 export const useAuth = () => {
   const {user, setUser, deleteUser} = useAppStore();
-  console.log('user', user);
 
   const login = useCallback(
     (user: TUser) => {
@@ -15,7 +14,7 @@ export const useAuth = () => {
 
   const logout = useCallback(() => {
     deleteUser();
-  }, [setUser, deleteUser]);
+  }, [deleteUser]);
 
   return {login, logout, user};
 };
