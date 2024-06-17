@@ -1,4 +1,5 @@
 import {Clock, CurrentDay} from '@/components';
+import {InfoList} from '@/components/city-card/info-list';
 import {TWeather} from '@/services/api/types';
 import {getIconByWeatherCode} from '@/ui-kit/icons/weather-icons/adapters';
 import styles from './city-card.module.scss';
@@ -8,7 +9,17 @@ export type TProps = {
 };
 
 export const CityCard = ({weather}: TProps) => {
-  const {city, temperature, iconCode, sunrise, description} = weather;
+  const {
+    city,
+    temperature,
+    iconCode,
+    sunrise,
+    description,
+    wind,
+    humidity,
+    sunset,
+    pressure,
+  } = weather;
 
   return (
     <div className={styles.wrapper}>
@@ -37,7 +48,10 @@ export const CityCard = ({weather}: TProps) => {
           </span>
         </div>
         <div className={styles.divider}></div>
-        <div></div>
+        <InfoList
+          {...{windSpeed: wind.speed, humidity, sunset, sunrise, pressure}}
+        />
+        <div className={styles.divider}></div>
       </div>
     </div>
   );

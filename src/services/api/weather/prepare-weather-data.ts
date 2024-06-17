@@ -20,8 +20,8 @@ export const prepareWeatherData: TPreparedWeatherData = (data) => {
 
   return {
     city,
-    sunrise,
-    sunset,
+    sunrise: sunrise * 1000,
+    sunset: sunset * 1000,
     temperature,
     humidity,
     pressure,

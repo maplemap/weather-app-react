@@ -1,18 +1,12 @@
 import React, {useEffect, useState} from 'react';
-
-const getCurrentTime = (): string => {
-  const now = new Date();
-  const hours = String(now.getHours()).padStart(2, '0');
-  const minutes = String(now.getMinutes()).padStart(2, '0');
-  return `${hours}:${minutes}`;
-};
+import {getTime} from '@/utils/getTime';
 
 export const Clock = () => {
-  const [time, setTime] = useState(getCurrentTime());
+  const [time, setTime] = useState(getTime());
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setTime(getCurrentTime());
+      setTime(getTime());
     }, 1000);
 
     return () => clearInterval(intervalId);
