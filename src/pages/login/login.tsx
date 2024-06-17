@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import React, {FormEvent, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {ROUTES} from '@/routes/constants';
 import {useAuth} from '@/services/auth';
@@ -20,11 +20,14 @@ export const LoginPage = () => {
     return null;
   }
 
-  const onSubmitForm = (e) => {
+  const onSubmitForm = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
+    const formData = new FormData(e.currentTarget);
     const email = formData.get('email');
-    login({email});
+
+    if (typeof email === 'string') {
+      login({email});
+    }
   };
 
   return (
