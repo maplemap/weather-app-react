@@ -5,10 +5,10 @@ import {getIconByWeatherCode} from '@/ui-kit/icons/weather-icons/adapters';
 import styles from './city-card.module.scss';
 
 export type TProps = {
-  weather: TWeather;
+  currentWeather: TWeather;
 };
 
-export const CityCard = ({weather}: TProps) => {
+export const CityCard = ({currentWeather}: TProps) => {
   const {
     city,
     temperature,
@@ -19,12 +19,12 @@ export const CityCard = ({weather}: TProps) => {
     humidity,
     sunset,
     pressure,
-  } = weather;
+  } = currentWeather;
 
   return (
     <div className={styles.wrapper}>
       <h2 className={styles.header}>
-        Current weather and forecasts in your city
+        Current weather and forecast in your city
       </h2>
       <div className={styles.contentWrapper}>
         <div className={styles.skyIcon}>

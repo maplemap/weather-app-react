@@ -1,10 +1,10 @@
 import {Navigate} from 'react-router-dom';
 import {
-  ForecastPage,
   LoginPage,
   NotFoundPage,
   PrimaryPage,
   SecurePage,
+  WeatherPage,
 } from '@/pages';
 import {ROUTES} from '@/routes/constants';
 
@@ -18,7 +18,7 @@ export const routes = [
           {
             path: ROUTES.BASE,
             exact: true,
-            element: <ForecastPage />,
+            element: <WeatherPage />,
           },
         ],
       },

@@ -1,8 +1,12 @@
 import {TWeather} from '@/services/api/types';
 
-type TPreparedWeatherData = (data: Record<string, any>) => TWeather | null;
+type TPreparedCurrentWeatherData = (
+  data: Record<string, any>,
+) => TWeather | null;
 
-export const prepareWeatherData: TPreparedWeatherData = (data) => {
+export const prepareCurrentWeatherData: TPreparedCurrentWeatherData = (
+  data,
+) => {
   if (
     !data ||
     (Object.prototype.hasOwnProperty.call(data, 'cod') && data.cod === '404')
