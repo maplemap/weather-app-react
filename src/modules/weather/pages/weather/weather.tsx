@@ -35,7 +35,7 @@ export const WeatherPage = () => {
     return () => {
       clearInterval(intervalId);
     };
-  }, []);
+  }, [getCurrentWeather, getForecast]);
 
   useEffect(() => {
     if (firstRender.current && currentWeather) {
