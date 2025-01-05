@@ -1,7 +1,7 @@
 export type TGetFormattedDate = (timestamp?: number) => string;
 
 export const getFormattedDate: TGetFormattedDate = (
-  timestamp = Date.now(),
+  timestamp = Date.now()
 ): string => {
   const now = new Date(timestamp);
   const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];

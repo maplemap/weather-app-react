@@ -1,6 +1,5 @@
 import React from 'react';
-import {ErrorBoundary as ErrorBoundaryComponent} from 'react-error-boundary';
-import {useLocation} from 'react-router-dom';
+import { ErrorBoundary as ErrorBoundaryComponent } from 'react-error-boundary';
 import styles from './error-boundary.module.scss';
 
 const DEFAULT_MESSAGE =
@@ -15,11 +14,8 @@ export const ErrorBoundary = ({
   children,
   message = DEFAULT_MESSAGE,
 }: TProps) => {
-  const location = useLocation();
-
   return (
     <ErrorBoundaryComponent
-      key={location.pathname}
       fallback={<div className={styles.error}>{message}</div>}
     >
       {children}

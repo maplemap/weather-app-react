@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {getTime} from '@/utils/get-time';
+import React, { useEffect, useState } from 'react';
+import { getTime } from '@/utils/get-time';
 
 export const Clock = () => {
   const [time, setTime] = useState(getTime());

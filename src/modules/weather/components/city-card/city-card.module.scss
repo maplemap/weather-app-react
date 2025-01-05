@@ -1,0 +1,147 @@
+@import '@/styles/mixins.scss';
+@import '@/styles/variables.scss';
+@import '@/styles/colors.scss';
+
+.wrapper {
+  margin: 0 auto;
+}
+
+.header {
+  padding: 1.18em 0;
+}
+
+.updateTime {
+    position: absolute;
+    top: 3.8em;
+    right: 0;
+    width: 30%;
+    color: #9a9a9a;
+    font-size: .5em;
+    font-weight: 300;
+    text-align: right;
+    text-transform: uppercase;
+    opacity: .8;
+    padding: .3em 3% .2em 0;
+    background: -moz-linear-gradient(left, rgba(255, 255, 255, 0), $colorNeutral500);
+    background: -ms-linear-gradient(left, rgba(255, 255, 255, 0), $colorNeutral500);
+    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0), $colorNeutral500);
+
+    span {
+      color: #656565;
+      font-size: 1.3em;
+    }
+}
+
+.contentWrapper {
+  position: relative;
+  font-family: $robotoFont;
+  box-sizing: border-box;
+  border-radius: 2px;
+  padding: 2em 0 0 0;
+  margin: 0 auto;
+  box-shadow: rgba(0, 0, 0, 0.12) 0 toRem(1) toRem(6), rgba(0, 0, 0, 0.12) 0 toRem(1) toRem(4);
+}
+
+.temperature {
+  font-size: toRem(64);
+  text-align: center;
+
+  span {
+    position: relative;
+    left: toRem(-10);
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+
+    &:before,
+    &::after {
+      display: block;
+      position: absolute;
+    }
+
+    &::before {
+      content: attr(data-deg);
+      top: toRem(-13);
+      right: toRem(-17);
+      font-weight: 300;
+      font-size: 90%;
+    }
+
+    &::after {
+      content: attr(data-unit);
+      bottom: toRem(7);
+      right: toRem(-26);
+      font-size: 55%;
+    }
+  }
+
+  @include respond-below(xs) {
+    font-size: toRem(43.2);
+  };
+}
+
+.skyIcon {
+  position: absolute;
+  top: toRem(40);
+  left: 8%;
+
+  span {
+    font-size: toRem(96);
+  }
+
+  @include respond-below(xs) {
+    top: toRem(48);
+
+    & span {
+      font-size: toRem(48);
+    }
+  };
+}
+
+.cityName {
+  width: 74%;
+  font-size: toRem(32);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0 auto toRem(8) auto;
+}
+
+.skyState {
+  font-size: toRem(16);
+  text-transform: lowercase;
+  opacity: .7;
+}
+
+.dateTime {
+  position: absolute;
+  top: toRem(48);
+  right: 3%;
+  font-size: toRem(16);
+  text-align: right;
+
+  @include respond-below(xs) {
+    font-size: toRem(11.2);
+  };
+}
+
+.clock {
+  display: block;
+  font-size: toRem(40);
+
+  @include respond-below(xs) {
+    font-size: toRem(26);
+  };
+}
+
+.date {
+  display: block;
+  text-transform: uppercase;
+  margin-right: toRem(1.6);
+}
+
+.divider {
+  border-bottom: toRem(1) solid rgba(0, 0, 0, .05);
+  margin: toRem(16) auto toRem(16) auto;
+}

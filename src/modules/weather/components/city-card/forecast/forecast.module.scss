@@ -1,0 +1,121 @@
+@import '@/styles/variables.scss';
+@import '@/styles/mixins.scss';
+
+.wrapper {
+  height: auto;
+  font-size: toRem(14);
+  overflow: hidden;
+  transition: all .3s;
+
+  @include respond-below(xs) {
+    width: 80%;
+    font-size: toRem(16);
+    margin: 0 auto;
+  };
+}
+
+.header {
+  font-size: toRem(15);
+  margin-bottom: toRem(14);
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+
+  @include respond-below(xs) {
+    flex-flow: wrap;
+    padding: 0;
+  };
+}
+
+.listItem {
+  flex: 1 1 calc(100% / 7);
+  max-width: calc(100% / 7);
+  text-align: center;
+  margin-bottom: toRem(19);
+
+  @include respond-below(xs) {
+    flex: 0 0 50%;
+    display: inline-block;
+    margin-bottom: toRem(24);
+  };
+}
+
+.listItemDate {
+  font-size: toRem(13);
+
+  @include respond-below(xs) {
+    font-weight: 700;
+  };
+}
+
+.listItemSkyState {
+  span {
+    display: inline-block;
+    font-size: toRem(24);
+    padding: toRem(6) 0;
+  }
+
+  @include respond-below('xs') {
+    font-size: 130%;
+  };
+}
+
+.listItemTemperature {
+  display: block;
+  width: 98%;
+  font-size: toRem(12);
+  padding: toRem(4.8) 0 toRem(1.6) 0;
+  vertical-align: middle;
+  margin: 0 auto;
+}
+
+.listItemTemperatureData {
+  display: inline-block;
+  position: relative;
+  left: toRem(-6);
+
+  &:before,
+  &::after {
+    display: block;
+    position: absolute;
+  }
+
+  &::before {
+    content: attr(data-deg);
+    top: 0;
+    right: toRem(-5);
+    font-weight: 300;
+    font-size: 90%;
+  }
+
+  &::after {
+    content: attr(data-unit);
+    bottom: 0;
+    right: toRem(-13);
+  }
+}
+
+.listItemTemperatureNight {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.listItemNaturalPhenomenon {
+  font-size: toRem(13);
+  padding: toRem(4.8) toRem(1.6);
+}
+
+.more {
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    text-align: center;
+
+  &__button {
+      width: 100%;
+      text-transform: uppercase;
+      font-size: .8em;
+      border: none !important;
+      padding: .5em 0;
+      background: rgba(0, 0, 0, 0.01);
+  }
+}

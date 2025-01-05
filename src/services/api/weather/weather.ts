@@ -1,6 +1,6 @@
-import {apiConfig} from './config';
+import { apiConfig } from './config';
 
 export const getCurrentWeatherByCity = (city: string) =>
   fetch(
-    `${apiConfig.host}/weather?appid=${apiConfig.appId}&q=${city}&units=metric`,
+    `${apiConfig.host}/weather?appid=${apiConfig.appId}&q=${city}&units=metric`
   ).then((response) => response.json());

@@ -6,7 +6,5 @@ Based on React and free API from [openweathermap.org](https://openweathermap.org
 
 ## Technologies
 - React
-- React Router
 - TypeScript
-- Zustand
 - React Query

@@ -1,0 +1,7 @@
+@import '@/styles/mixins.scss';
+@import '@/styles/variables.scss';
+
+.content {
+  max-width: toRem($maxWidthApp);
+  margin: toRem(64) auto;
+}

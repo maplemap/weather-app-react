@@ -1,5 +1,5 @@
-import {TForecast} from '@/services/api/types';
-import {isItCurrentDayByTimestamps} from '@/utils/is-it-current-day-by-timestamp';
+import { TForecast } from '@/types/weather';
+import { isItCurrentDayByTimestamps } from '@/utils/is-it-current-day-by-timestamp';
 
 type TPrepareForecastData = (data: Record<string, any>) => Array<TForecast>;
 
@@ -10,8 +10,8 @@ export const prepareForecastData: TPrepareForecastData = (data) => {
     return data.list.map((item: Record<string, any>) => {
       const {
         dt: date,
-        temp: {day: dayTemperature, night: nightTemperature},
-        weather: [{id: iconCode, description}],
+        temp: { day: dayTemperature, night: nightTemperature },
+        weather: [{ id: iconCode, description }],
       } = item;
 
       return {
