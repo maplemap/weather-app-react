@@ -43,7 +43,7 @@ export const useCurrentWeather: TUseCurrentWeather = (city) => {
     return () => {
       clearInterval(intervalId);
     };
-  }, [getData, getCurrentData]);
+  }, [getData, getCurrentData, updateLastDataUpdate]);
 
   return {
     currentWeather: data,
