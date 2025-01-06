@@ -1,25 +1,54 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Weather } from '@/modules/weather/types/weather';
+import { useAppContext } from '@/services/store/provider';
 import { useFetchCurrentWeather } from './api/adapters';
+
+const DATA_UPDATE_INTERVAL = 5 * 60 * 1000;
 
 export type TUseCurrentWeather = (city: string) => {
   currentWeather: Weather | null;
   isLoading: boolean;
-  getData: () => void;
+  lastDataUpdate: Date;
 };
 
 export const useCurrentWeather: TUseCurrentWeather = (city) => {
-  const { data, getData, isLoading } = useFetchCurrentWeather(city);
+  const { units } = useAppContext();
+  const { data, getData, isLoading } = useFetchCurrentWeather(city, units);
+  const [lastDataUpdate, setLastDataUpdate] = useState<Date>(new Date());
 
-  useEffect(() => {
+  const getCurrentData = useCallback(() => {
     if (city) {
       getData().catch(console.log); // eslint-disable-line no-console
     }
   }, [city, getData]);
 
+  const updateLastDataUpdate = useCallback(() => {
+    setLastDataUpdate(new Date());
+  }, []);
+
+  useEffect(() => {
+    getCurrentData();
+    updateLastDataUpdate();
+  }, [getCurrentData, units, updateLastDataUpdate]);
+
+  useEffect(() => {
+    getCurrentData();
+
+    const intervalId = setInterval(() => {
+      getCurrentData();
+
+      updateLastDataUpdate();
+    }, DATA_UPDATE_INTERVAL);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [getData, getCurrentData]);
+
   return {
     currentWeather: data,
     isLoading,
     getData,
+    lastDataUpdate,
   };
 };

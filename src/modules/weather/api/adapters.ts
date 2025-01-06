@@ -4,10 +4,10 @@ import { getForecastByCity } from './actions/forecast';
 import { getCurrentWeatherByCity } from './actions/weather';
 import { prepareCurrentWeatherData, prepareForecastData } from './utils';
 
-export const useFetchCurrentWeather = (city: string) => {
+export const useFetchCurrentWeather = (city: string, tempUnit: Units) => {
   const { data, isError, refetch, isFetching } = useQuery(
     'current-weather',
-    () => getCurrentWeatherByCity(city),
+    () => getCurrentWeatherByCity(city, tempUnit),
     { enabled: false }
   );
 
@@ -21,10 +21,10 @@ export const useFetchCurrentWeather = (city: string) => {
   };
 };
 
-export const useFetchForecast = (city: string) => {
+export const useFetchForecast = (city: string, tempUnit: Units) => {
   const { data, isError, refetch, isFetching } = useQuery(
     'forecast',
-    () => getForecastByCity(city),
+    () => getForecastByCity(city, tempUnit),
     { enabled: false }
   );
 

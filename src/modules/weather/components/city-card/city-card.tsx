@@ -1,4 +1,5 @@
 import { Clock } from '@/components';
+import { getTempLabel } from '@/modules/weather/components/city-card/utils/get-temp-label';
 import {
   Forecast as ForecastType,
   Weather,
@@ -14,12 +15,14 @@ export type Props = {
   currentWeather: Weather;
   forecast: Array<ForecastType>;
   lastDataUpdate: Date;
+  units: Units;
 };
 
 export const CityCard = ({
   currentWeather,
   forecast,
   lastDataUpdate,
+  units,
 }: Props) => {
   const {
     city,
@@ -47,7 +50,7 @@ export const CityCard = ({
           {getIconByWeatherCode(iconCode, sunrise)}
         </div>
         <div className={styles.temperature}>
-          <span data-deg='°' data-unit='C'>
+          <span data-deg='°' data-unit={getTempLabel(units)}>
             {Math.round(temperature)}
           </span>
         </div>
@@ -65,10 +68,17 @@ export const CityCard = ({
         </div>
         <div className={styles.divider}></div>
         <InfoList
-          {...{ windSpeed: wind.speed, humidity, sunset, sunrise, pressure }}
+          {...{
+            windSpeed: wind.speed,
+            humidity,
+            sunset,
+            sunrise,
+            pressure,
+            units,
+          }}
         />
         <div className={styles.divider}></div>
-        {forecast.length > 0 && <Forecast forecast={forecast} />}
+        {forecast.length > 0 && <Forecast forecast={forecast} units={units} />}
       </div>
     </div>
   );

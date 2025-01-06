@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { getTempLabel } from '@/modules/weather/components/city-card/utils/get-temp-label';
 import { Forecast as ForecastType } from '@/modules/weather/types/weather';
 import { Button } from '@/ui-kit/button';
 import { getIconByWeatherCode } from '@/ui-kit/icons/weather-icons/adapters';
@@ -7,9 +8,10 @@ import styles from './forecast.module.scss';
 
 export type ForecastProps = {
   forecast: Array<ForecastType>;
+  units: Units;
 };
 
-export const Forecast = ({ forecast }: ForecastProps) => {
+export const Forecast = ({ forecast, units }: ForecastProps) => {
   const [showMore, setShowMore] = useState(false);
 
   const foreCastData = showMore ? forecast : [...forecast].splice(0, 7);
@@ -38,7 +40,7 @@ export const Forecast = ({ forecast }: ForecastProps) => {
                 <span
                   className={styles.listItemTemperatureData}
                   data-deg='°'
-                  data-unit='C'
+                  data-unit={getTempLabel(units)}
                 >
                   {Math.round(dayTemperature)}
                 </span>
@@ -49,7 +51,7 @@ export const Forecast = ({ forecast }: ForecastProps) => {
                 <span
                   className={styles.listItemTemperatureData}
                   data-deg='°'
-                  data-unit='C'
+                  data-unit={getTempLabel(units)}
                 >
                   {Math.round(nightTemperature)}
                 </span>

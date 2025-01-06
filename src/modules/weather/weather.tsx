@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useAppContext } from '@/services/store/provider';
 import { Loader } from '@/ui-kit/loader';
 import { CityCard, NoCityFound, SearchBar } from './components';
 import { useCurrentWeather } from './use-current-weather';
@@ -6,36 +7,18 @@ import { useForecast } from './use-forecast';
 import styles from './weather.module.scss';
 
 const DEFAULT_CITY = 'London';
-const DATA_UPDATE_INTERVAL = 5 * 60 * 1000;
 
 export const WeatherPage = () => {
   const [city, setCity] = useState(DEFAULT_CITY);
-  const [lastDataUpdate, setLastDataUpdate] = useState<Date>(new Date());
   const {
     currentWeather,
     isLoading: currentWeatherLoading,
-    getData: getCurrentWeather,
+    lastDataUpdate,
   } = useCurrentWeather(city);
-  const {
-    forecast,
-    isLoading: forecastLoading,
-    getData: getForecast,
-  } = useForecast(city);
+  const { forecast, isLoading: forecastLoading } = useForecast(city);
+  const { units } = useAppContext();
   const firstRender = useRef(true);
   const isLoading = currentWeatherLoading || forecastLoading;
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      getCurrentWeather();
-      getForecast();
-
-      setLastDataUpdate(new Date());
-    }, DATA_UPDATE_INTERVAL);
-
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [getCurrentWeather, getForecast]);
 
   useEffect(() => {
     if (firstRender.current && currentWeather) {
@@ -52,6 +35,7 @@ export const WeatherPage = () => {
             currentWeather={currentWeather}
             forecast={forecast}
             lastDataUpdate={lastDataUpdate}
+            units={units}
           />
         )}
         {!currentWeather && !firstRender.current && <NoCityFound />}

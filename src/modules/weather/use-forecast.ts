@@ -1,6 +1,9 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
+import { useAppContext } from '@/services/store/provider';
 import { useFetchForecast } from './api/adapters';
 import { Forecast } from './types/weather';
+
+const DATA_UPDATE_INTERVAL = 5 * 60 * 1000;
 
 export type TUseForecast = (city: string) => {
   forecast: Array<Forecast>;
@@ -9,13 +12,30 @@ export type TUseForecast = (city: string) => {
 };
 
 export const useForecast: TUseForecast = (city) => {
-  const { data, getData, isLoading } = useFetchForecast(city);
+  const { units } = useAppContext();
+  const { data, getData, isLoading } = useFetchForecast(city, units);
 
-  useEffect(() => {
+  const getCurrentData = useCallback(() => {
     if (city) {
       getData().catch(console.log); // eslint-disable-line no-console
     }
   }, [city, getData]);
+
+  useEffect(() => {
+    getCurrentData();
+  }, [getCurrentData, units]);
+
+  useEffect(() => {
+    getCurrentData();
+
+    const intervalId = setInterval(() => {
+      getCurrentData();
+    }, DATA_UPDATE_INTERVAL);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [getData, getCurrentData]);
 
   return {
     forecast: data,

@@ -8,7 +8,7 @@
   color: $colorNeutral850;
   font-size: toRem(13);
   opacity: .8;
-  gap: toRem(100);
+  gap: toRem(190);
 
   @include respond-below(xs) {
     flex-flow: wrap;
@@ -19,7 +19,7 @@
 }
 
 .infoList {
-  margin: 0 9%;
+  width: toRem(150);
 
   @include respond-below(xs) {
     flex: 0 0 50%;

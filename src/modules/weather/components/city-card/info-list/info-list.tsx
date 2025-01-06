@@ -10,6 +10,7 @@ export type TInfoListProps = {
   pressure: Weather['pressure'];
   sunrise: Weather['sunrise'];
   sunset: Weather['sunset'];
+  units: Units;
 };
 
 export const InfoList = ({
@@ -18,35 +19,45 @@ export const InfoList = ({
   sunset,
   pressure,
   humidity,
-}: TInfoListProps) => (
-  <div className={styles.info}>
-    <div className={styles.infoList}>
-      <div className={styles.infoListItem}>
-        <strong>Wind:</strong>
-        <span>{getWindBeaufortScaleByMeterInSecond(windSpeed)}</span>
+  units,
+}: TInfoListProps) => {
+  const windUnits = units === 'metric' ? 'm/s' : 'mil/h';
+  const pressureUnits = units === 'metric' ? 'mm/Hg' : 'hPa';
+
+  return (
+    <div className={styles.info}>
+      <div className={styles.infoList}>
+        <div className={styles.infoListItem}>
+          <strong>Wind:</strong>
+          <span>{getWindBeaufortScaleByMeterInSecond(windSpeed)}</span>
+        </div>
+        <div className={styles.infoListItem}>
+          <strong>Wind speed:</strong>
+          <span>
+            {windSpeed} {windUnits}
+          </span>
+        </div>
+        <div className={styles.infoListItem}>
+          <strong>Humidity:</strong>
+          <span>{humidity}%</span>
+        </div>
       </div>
-      <div className={styles.infoListItem}>
-        <strong>Wind speed:</strong>
-        <span>{windSpeed} m/s</span>
-      </div>
-      <div className={styles.infoListItem}>
-        <strong>Humidity:</strong>
-        <span>{humidity}%</span>
+      <div className={styles.infoList}>
+        <div className={styles.infoListItem}>
+          <strong>Pressure:</strong>
+          <span>
+            {getPressureInMmHg(pressure)} {pressureUnits}
+          </span>
+        </div>
+        <div className={styles.infoListItem}>
+          <strong>Sunrise:</strong>
+          <span>{getTime(sunrise)}</span>
+        </div>
+        <div className={styles.infoListItem}>
+          <strong>Sunset:</strong>
+          <span>{getTime(sunset)}</span>
+        </div>
       </div>
     </div>
-    <div className={styles.infoList}>
-      <div className={styles.infoListItem}>
-        <strong>Pressure:</strong>
-        <span>{getPressureInMmHg(pressure)} mm/Hg</span>
-      </div>
-      <div className={styles.infoListItem}>
-        <strong>Sunrise:</strong>
-        <span>{getTime(sunrise)}</span>
-      </div>
-      <div className={styles.infoListItem}>
-        <strong>Sunset:</strong>
-        <span>{getTime(sunset)}</span>
-      </div>
-    </div>
-  </div>
-);
+  );
+};

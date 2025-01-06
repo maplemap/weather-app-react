@@ -7,12 +7,17 @@
 
 .wrapper {
   display: flex;
+  justify-content: space-between;
   width: 94%;
   max-width: toRem($maxWidthApp);
   height: toRem(64);
   line-height: toRem(64);
   padding: 0 3%;
   margin: 0 auto;
+}
+
+.brand {
+  display: flex;
 }
 
 .logo {
