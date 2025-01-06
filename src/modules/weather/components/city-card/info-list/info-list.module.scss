@@ -1,6 +1,6 @@
-@import '@/styles/variables.scss';
-@import '@/styles/colors.scss';
-@import '@/styles/mixins.scss';
+@use '@/styles/mixins' as *;
+@use '@/styles/colors' as *;
+@use '@/styles/variables' as *;
 
 .info {
   display: flex;

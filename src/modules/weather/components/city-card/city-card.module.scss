@@ -1,6 +1,6 @@
-@import '@/styles/mixins.scss';
-@import '@/styles/variables.scss';
-@import '@/styles/colors.scss';
+@use '@/styles/mixins' as *;
+@use '@/styles/variables' as *;
+@use '@/styles/colors' as *;
 
 .wrapper {
   margin: 0 auto;

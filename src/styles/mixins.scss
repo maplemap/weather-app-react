@@ -1,18 +1,19 @@
-@import '@/styles/variables';
-@import '@/styles/breakpoints';
+@use '@/styles/variables' as *;
+@use '@/styles/breakpoints' as *;
+@use 'sass:math';
+@use 'sass:map';
 
 @function toRem($size) {
-  @return calc($size / $rootFontSize) * 1rem;
+  @return math.div($size, $rootFontSize) * 1rem;
 }
 
 @mixin respond-below($breakpoint) {
-  @if map-has-key($breakpoints, $breakpoint) {
-    $breakpoint-value: map-get($breakpoints, $breakpoint);
+  @if map.has-key($breakpoints, $breakpoint) {
+    $breakpoint-value: map.get($breakpoints, $breakpoint);
 
     @media (max-width: toRem($breakpoint-value)) {
       @content;
     }
-
   } @else {
     @warn 'Invalid breakpoint: #{$breakpoint}.';
   }

@@ -1,8 +1,8 @@
-@import "@/styles/normalize";
-@import "@/styles/fonts";
-@import "@/styles/variables";
-@import "@/styles/colors";
-@import "@/styles/mixins";
+@use '@/styles/normalize' as *;
+@use '@/styles/fonts' as *;
+@use '@/styles/variables' as *;
+@use '@/styles/colors' as *;
+@use '@/styles/mixins' as *;
 
 html,
 body {

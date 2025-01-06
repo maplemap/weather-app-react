@@ -1,5 +1,7 @@
-@import '@/styles/colors';
-@import '@/styles/mixins';
+@use '@/styles/colors' as *;
+@use '@/styles/mixins' as *;
+
+
 
 .button {
   display: inline-block;

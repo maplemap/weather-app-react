@@ -1,5 +1,5 @@
-@import '@/styles/mixins.scss';
-@import '@/styles/variables.scss';
+@use '@/styles/mixins' as *;
+@use '@/styles/variables' as *;
 
 .content {
   max-width: toRem($maxWidthApp);

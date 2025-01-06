@@ -1,5 +1,5 @@
-@import '@/styles/variables';
-@import '@/styles/mixins';
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
 
 .header {
   box-shadow: rgba(0, 0, 0, 0.12) 0 0 toRem(6) 0;
