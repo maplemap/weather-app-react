@@ -1,4 +1,4 @@
-import { apiConfig } from './config';
+import { apiConfig } from '../config';
 
 export const getForecastByCity = (city: string) =>
   fetch(

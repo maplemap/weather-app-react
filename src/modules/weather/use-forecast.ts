@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import { useFetchForecast } from '@/services/api';
-import { TForecast } from '@/types/weather';
+import { useFetchForecast } from './api/adapters';
+import { Forecast } from './types/weather';
 
 export type TUseForecast = (city: string) => {
-  forecast: Array<TForecast>;
+  forecast: Array<Forecast>;
   isLoading: boolean;
   getData: () => void;
 };

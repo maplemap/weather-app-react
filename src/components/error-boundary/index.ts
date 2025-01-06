@@ -1,4 +1,4 @@
 export {
   ErrorBoundary,
-  type TProps as ErrorBoundaryProps,
+  type Props as ErrorBoundaryProps,
 } from './error-boundary';

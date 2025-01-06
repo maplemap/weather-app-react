@@ -1,15 +1,15 @@
-import { TWeather } from '@/types/weather';
+import { Weather } from '@/modules/weather/types/weather';
 import { getTime } from '@/utils/get-time';
 import { getPressureInMmHg } from '../utils/get-pressure-in-mm-hg';
 import { getWindBeaufortScaleByMeterInSecond } from '../utils/get-wind-beufort-scale';
 import styles from './info-list.module.scss';
 
 export type TInfoListProps = {
-  windSpeed: TWeather['wind']['speed'];
-  humidity: TWeather['humidity'];
-  pressure: TWeather['pressure'];
-  sunrise: TWeather['sunrise'];
-  sunset: TWeather['sunset'];
+  windSpeed: Weather['wind']['speed'];
+  humidity: Weather['humidity'];
+  pressure: Weather['pressure'];
+  sunrise: Weather['sunrise'];
+  sunset: Weather['sunset'];
 };
 
 export const InfoList = ({

@@ -1,6 +1,6 @@
 import { TWeatherIconCode } from '@/ui-kit/icons/weather-icons/types';
 
-type TWeather = {
+type Weather = {
   city: string;
   description: string;
   sunrise: number;
@@ -15,7 +15,7 @@ type TWeather = {
   };
 };
 
-type TForecast = {
+type Forecast = {
   currentDay: boolean;
   date: number;
   iconCode: TWeatherIconCode;

@@ -1,4 +1,4 @@
-import { WeatherPage } from '@/modules';
+import { WeatherPage } from '@/modules/weather';
 import { PrimaryPage } from '@/pages';
 import { ApiProvider } from '@/services/api/provider';
 import './styles/main.scss';

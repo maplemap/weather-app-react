@@ -1,5 +1,8 @@
 import { Clock } from '@/components';
-import { TForecast, TWeather } from '@/types/weather';
+import {
+  Forecast as ForecastType,
+  Weather,
+} from '@/modules/weather/types/weather';
 import { getIconByWeatherCode } from '@/ui-kit/icons/weather-icons/adapters';
 import { CurrentDay } from '../../components';
 import styles from './city-card.module.scss';
@@ -7,9 +10,9 @@ import { Forecast } from './forecast';
 import { InfoList } from './info-list';
 import { getFormattedTime } from './utils/get-formatted-time';
 
-export type TProps = {
-  currentWeather: TWeather;
-  forecast: Array<TForecast>;
+export type Props = {
+  currentWeather: Weather;
+  forecast: Array<ForecastType>;
   lastDataUpdate: Date;
 };
 
@@ -17,7 +20,7 @@ export const CityCard = ({
   currentWeather,
   forecast,
   lastDataUpdate,
-}: TProps) => {
+}: Props) => {
   const {
     city,
     temperature,

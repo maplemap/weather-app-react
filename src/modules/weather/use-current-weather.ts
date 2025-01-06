@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import { useFetchCurrentWeather } from '@/services/api';
-import { TWeather } from '@/types/weather';
+import { Weather } from '@/modules/weather/types/weather';
+import { useFetchCurrentWeather } from './api/adapters';
 
 export type TUseCurrentWeather = (city: string) => {
-  currentWeather: TWeather | null;
+  currentWeather: Weather | null;
   isLoading: boolean;
   getData: () => void;
 };

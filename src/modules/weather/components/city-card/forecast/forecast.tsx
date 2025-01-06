@@ -1,15 +1,15 @@
 import { useState } from 'react';
-import { TForecast } from '@/types/weather';
+import { Forecast as ForecastType } from '@/modules/weather/types/weather';
 import { Button } from '@/ui-kit/button';
 import { getIconByWeatherCode } from '@/ui-kit/icons/weather-icons/adapters';
 import { getFormattedDate } from '@/utils/get-formatted-date';
 import styles from './forecast.module.scss';
 
-export type TForecastProps = {
-  forecast: Array<TForecast>;
+export type ForecastProps = {
+  forecast: Array<ForecastType>;
 };
 
-export const Forecast = ({ forecast }: TForecastProps) => {
+export const Forecast = ({ forecast }: ForecastProps) => {
   const [showMore, setShowMore] = useState(false);
 
   const foreCastData = showMore ? forecast : [...forecast].splice(0, 7);

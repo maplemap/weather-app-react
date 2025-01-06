@@ -1,9 +1,8 @@
 import { useMemo } from 'react';
 import { useQuery } from 'react-query';
-import { getForecastByCity } from '@/services/api/weather/forecast';
-import { prepareCurrentWeatherData } from '@/services/api/weather/prepare-current-weather-data';
-import { prepareForecastData } from '@/services/api/weather/prepare-forecast-data';
-import { getCurrentWeatherByCity } from './weather';
+import { getForecastByCity } from './actions/forecast';
+import { getCurrentWeatherByCity } from './actions/weather';
+import { prepareCurrentWeatherData, prepareForecastData } from './utils';
 
 export const useFetchCurrentWeather = (city: string) => {
   const { data, isError, refetch, isFetching } = useQuery(

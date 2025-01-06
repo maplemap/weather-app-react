@@ -5,7 +5,7 @@ import styles from './error-boundary.module.scss';
 const DEFAULT_MESSAGE =
   'Something went wrong. Please update the page now or try again it later.';
 
-export type TProps = {
+export type Props = {
   message?: string;
   children: React.ReactNode;
 };
@@ -13,7 +13,7 @@ export type TProps = {
 export const ErrorBoundary = ({
   children,
   message = DEFAULT_MESSAGE,
-}: TProps) => {
+}: Props) => {
   return (
     <ErrorBoundaryComponent
       fallback={<div className={styles.error}>{message}</div>}

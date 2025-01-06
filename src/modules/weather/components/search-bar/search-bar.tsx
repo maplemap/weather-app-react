@@ -9,11 +9,11 @@ enum KEYBOARD_KEY {
   ENTER = 'Enter',
 }
 
-type TProps = {
+type Props = {
   onChange?: (query: string) => void;
 };
 
-export const SearchBar = ({ onChange }: TProps) => {
+export const SearchBar = ({ onChange }: Props) => {
   const [query, setQuery] = useState('');
 
   const cleanSearchBar = () => {
