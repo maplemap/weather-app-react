@@ -1,9 +1,8 @@
 export type TGetFormattedDate = (timestamp?: number) => string;
 
-export const getFormattedDate: TGetFormattedDate = (
-  timestamp = Date.now()
-): string => {
-  const now = new Date(timestamp);
+export const getFormattedDate: TGetFormattedDate = (timestamp): string => {
+  const date = timestamp ? new Date(timestamp * 1000) : new Date();
+
   const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const months = [
     'Jan',
@@ -20,9 +19,9 @@ export const getFormattedDate: TGetFormattedDate = (
     'Dec',
   ];
 
-  const dayOfWeek = daysOfWeek[now.getDay()];
-  const month = months[now.getMonth()];
-  const day = now.getDate();
+  const dayOfWeek = daysOfWeek[date.getDay()];
+  const month = months[date.getMonth()];
+  const day = date.getDate();
 
   return `${dayOfWeek} ${month} ${day}`;
 };
