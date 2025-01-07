@@ -8,7 +8,7 @@
   transition: all .3s;
 
   @include respond-below(xs) {
-    width: 80%;
+    width: 98%;
     font-size: toRem(16);
     margin: 0 auto;
   };
