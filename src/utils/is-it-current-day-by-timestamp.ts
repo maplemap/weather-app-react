@@ -1,9 +1,9 @@
-export type TIsItCurrentDayByTimestamps = (
+export type IsItCurrentDayByTimestamps = (
   firstTimestamp: number,
   secondTimestamp: number
 ) => boolean;
 
-export const isItCurrentDayByTimestamps: TIsItCurrentDayByTimestamps = (
+export const isItCurrentDayByTimestamps: IsItCurrentDayByTimestamps = (
   firstTimestamp,
   secondTimestamp
 ) => {

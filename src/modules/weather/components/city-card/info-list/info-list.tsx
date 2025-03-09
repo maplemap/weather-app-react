@@ -4,7 +4,7 @@ import { getPressureInMmHg } from '../utils/get-pressure-in-mm-hg';
 import { getWindBeaufortScaleByMeterInSecond } from '../utils/get-wind-beufort-scale';
 import styles from './info-list.module.scss';
 
-export type TInfoListProps = {
+export type InfoListProps = {
   windSpeed: Weather['wind']['speed'];
   humidity: Weather['humidity'];
   pressure: Weather['pressure'];
@@ -13,16 +13,12 @@ export type TInfoListProps = {
   units: Units;
 };
 
-export const InfoList = ({
-  windSpeed,
-  sunrise,
-  sunset,
-  pressure,
-  humidity,
-  units,
-}: TInfoListProps) => {
+export const InfoList = (props: InfoListProps) => {
+  const { windSpeed, sunrise, sunset, humidity, units } = props;
   const windUnits = units === 'metric' ? 'm/s' : 'mil/h';
   const pressureUnits = units === 'metric' ? 'mm/Hg' : 'hPa';
+  const pressure =
+    units === 'metric' ? getPressureInMmHg(props.pressure) : props.pressure;
 
   return (
     <div className={styles.info}>
@@ -46,7 +42,7 @@ export const InfoList = ({
         <div className={styles.infoListItem}>
           <strong>Pressure:</strong>
           <span>
-            {getPressureInMmHg(pressure)} {pressureUnits}
+            {pressure} {pressureUnits}
           </span>
         </div>
         <div className={styles.infoListItem}>

@@ -11,6 +11,7 @@ export const Switcher = ({ label1, label2, onChange }: Props) => (
     <span className={styles.label}>{label1}</span>
     <label className={styles.toggle}>
       <input
+        role='switcher'
         type='checkbox'
         className={styles.toggleInput}
         onChange={(e) => onChange(e.currentTarget.checked)}

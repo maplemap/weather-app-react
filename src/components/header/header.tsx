@@ -10,7 +10,7 @@ export const Header = () => {
     <div className={styles.header}>
       <div className={styles.wrapper}>
         <div className={styles.brand}>
-          <a href='/' className={styles.logo}>
+          <a href='/' className={styles.logo} role='logo'>
             <DaySunnyIcon className={styles.logoIcon} />
           </a>
           <h1 className={styles.brand}>forecast</h1>

@@ -6,19 +6,34 @@ import { getIconByWeatherCode } from '@/ui-kit/icons/weather-icons/adapters';
 import { getFormattedDate } from '@/utils/get-formatted-date';
 import styles from './forecast.module.scss';
 
+type ForecastDays = 7 | 14;
+
+const FORECAST_DAYS: Record<'LESS' | 'MORE', ForecastDays> = {
+  LESS: 7,
+  MORE: 14,
+};
+
 export type ForecastProps = {
   forecast: Array<ForecastType>;
   units: Units;
 };
 
 export const Forecast = ({ forecast, units }: ForecastProps) => {
-  const [showMore, setShowMore] = useState(false);
+  const [forecastDays, setForecastDays] = useState<ForecastDays>(7);
 
-  const foreCastData = showMore ? forecast : [...forecast].splice(0, 7);
+  const foreCastData = [...forecast].splice(0, forecastDays);
+
+  const toggleForecastDays = () => {
+    setForecastDays(
+      forecastDays === FORECAST_DAYS.LESS
+        ? FORECAST_DAYS.MORE
+        : FORECAST_DAYS.LESS
+    );
+  };
 
   return (
     <div className={styles.wrapper}>
-      <h2 className={styles.header}>Forecast for {showMore ? 14 : 7} days</h2>
+      <h2 className={styles.header}>Forecast for {forecastDays} days</h2>
       <div className={styles.list}>
         {foreCastData.map(
           ({
@@ -64,11 +79,8 @@ export const Forecast = ({ forecast, units }: ForecastProps) => {
         )}
       </div>
       <div className={styles.more}>
-        <Button
-          className={styles.more__button}
-          onClick={() => setShowMore(!showMore)}
-        >
-          {showMore ? 'Less' : 'More'}
+        <Button className={styles.more__button} onClick={toggleForecastDays}>
+          {forecastDays === FORECAST_DAYS.MORE ? 'Less' : 'More'}
         </Button>
       </div>
     </div>

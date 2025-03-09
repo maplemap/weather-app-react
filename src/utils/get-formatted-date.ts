@@ -1,6 +1,6 @@
-export type TGetFormattedDate = (timestamp?: number) => string;
+export type GetFormattedDate = (timestamp?: number) => string;
 
-export const getFormattedDate: TGetFormattedDate = (timestamp): string => {
+export const getFormattedDate: GetFormattedDate = (timestamp): string => {
   const date = timestamp ? new Date(timestamp * 1000) : new Date();
 
   const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];

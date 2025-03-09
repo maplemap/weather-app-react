@@ -11,19 +11,15 @@ import { Forecast } from './forecast';
 import { InfoList } from './info-list';
 import { getFormattedTime } from './utils/get-formatted-time';
 
-export type Props = {
+export type CityCardProps = {
   currentWeather: Weather;
   forecast: Array<ForecastType>;
   lastDataUpdate: Date;
   units: Units;
 };
 
-export const CityCard = ({
-  currentWeather,
-  forecast,
-  lastDataUpdate,
-  units,
-}: Props) => {
+export const CityCard = (props: CityCardProps) => {
+  const { currentWeather, forecast, lastDataUpdate, units } = props;
   const {
     city,
     temperature,

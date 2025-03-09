@@ -22,7 +22,7 @@ export const SearchBar = ({ onChange }: Props) => {
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === KEYBOARD_KEY.ENTER) {
-      if (onChange) {
+      if (query && onChange) {
         onChange(query);
         cleanSearchBar();
       }
@@ -41,6 +41,7 @@ export const SearchBar = ({ onChange }: Props) => {
       <div className={styles.wrapper}>
         <div className={placeHolderClasses}>Your city name</div>
         <Input
+          role='searchbox'
           getRef={(input) => {
             input && input.focus();
           }}
@@ -50,10 +51,14 @@ export const SearchBar = ({ onChange }: Props) => {
           onKeyDown={onKeyDown}
         />
         <div className={styles.actionButtons}>
-          <Button className={styles.searchButton}>
+          <Button className={styles.searchButton} role='search-button'>
             <SearchIcon />
           </Button>
-          <Button className={cleanButtonClasses} onClick={cleanSearchBar}>
+          <Button
+            className={cleanButtonClasses}
+            onClick={cleanSearchBar}
+            role='clean-button'
+          >
             <CloseIcon />
           </Button>
         </div>

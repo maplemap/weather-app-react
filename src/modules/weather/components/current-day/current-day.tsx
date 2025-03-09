@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
 import { getFormattedDate } from '@/utils/get-formatted-date';
 
+const UPDATE_INTERVAL = 60 * 1000;
+
 export const CurrentDay = () => {
   const [date, setDate] = useState(getFormattedDate());
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       setDate(getFormattedDate());
-    }, 60000);
+    }, UPDATE_INTERVAL);
 
     return () => clearInterval(intervalId);
   }, []);
