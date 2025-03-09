@@ -36,8 +36,9 @@
   margin-bottom: toRem(19);
 
   @include respond-below(xs) {
-    flex: 0 0 50%;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     margin-bottom: toRem(24);
   };
 }
@@ -103,7 +104,11 @@
 
 .listItemNaturalPhenomenon {
   font-size: toRem(13);
-  padding: toRem(4.8) toRem(1.6);
+  padding: toRem(4.8);
+
+  @include respond-below('xs') {
+    display: none;
+  };
 }
 
 .more {
